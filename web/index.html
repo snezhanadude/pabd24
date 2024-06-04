@@ -1,0 +1,85 @@
+<html>
+<head>
+
+</head>
+  <style>
+body {
+  background-color: powderblue;
+}
+
+#result {
+  color: red;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+  </style>
+<body>
+
+<h1>House price predict app</h1>
+
+<form>
+  <label for="area">Area, m2:</label><br>
+  <input type="number" id="area" name="area" required min="1" max="100" value="44"><br><br>
+  <label for="token">Enter secret token</label><br>
+  <input type="text" id="token" name="token" required><br><br>
+  <input type="submit" value="Submit" id="submit_btn" >
+</form>
+
+<h3>Result: </h3>
+
+<span id="result"></span>
+
+<script>
+//  const area = document.getElementById("area");
+//  const submit_btn = document.getElementById("submit_btn");
+//  const result = document.getElementById("result");
+
+  const ENDPOINT = "http://127.0.0.1:5000/predict";
+
+  submit_btn.addEventListener("click", submit_click, false);
+
+  function submit_click(event) {
+    event.preventDefault();
+    if (area.valid){
+      console.log("Valid!");
+    }
+    let warn = "Wrong connection!";
+    let house_params = {area: area.value};
+    postJSON(house_params, token.value).then((response) => {
+      const price = response['price'];
+      result.innerHTML = price;
+    })
+    result.innerHTML = warn;
+  }
+
+async function postJSON(data, token) {
+  try {
+    const response = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        "mode": "no-cors",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log("Success:", result);
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+</script>
+
+</body>
+
+</html>
