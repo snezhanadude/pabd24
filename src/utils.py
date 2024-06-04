@@ -3,7 +3,6 @@
 import time
 import numpy as np
 
-
 def predict_io_bounded(area):
     """Emulate io delay"""
     time.sleep(1)

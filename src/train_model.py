@@ -18,7 +18,6 @@ TRAIN_DATA = 'data/proc/train.csv'
 VAL_DATA = 'data/proc/val.csv'
 MODEL_SAVE_PATH = 'models/linear_regression_v01.joblib'
 
-
 def main(args):
     df_train = pd.read_csv(TRAIN_DATA)
     x_train = df_train[['total_meters']]
@@ -39,7 +38,6 @@ def main(args):
     inter = int(linear_model.intercept_)
 
     logger.info(f'R2 = {r2:.3f}     MAE = {mae:.0f}     Price = {c} * area + {inter}')
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

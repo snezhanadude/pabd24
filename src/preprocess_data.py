@@ -10,7 +10,6 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s %(message)s')
 
-
 IN_FILES = ['data/raw/cian_flat_sale_1_50_moskva_26_Apr_2024_14_08_32_338904.csv',
             'data/raw/cian_flat_sale_1_50_moskva_26_Apr_2024_14_15_43_988750.csv',
             'data/raw/cian_flat_sale_1_50_moskva_26_Apr_2024_14_22_17_675082.csv']
@@ -19,7 +18,6 @@ OUT_TRAIN = 'data/proc/train.csv'
 OUT_VAL = 'data/proc/val.csv'
 
 TRAIN_SIZE = 0.9
-
 
 def main(args):
     main_dataframe = pd.read_csv(args.input[0], delimiter=';')
@@ -38,7 +36,6 @@ def main(args):
     train_df.to_csv(OUT_TRAIN)
     val_df.to_csv(OUT_VAL)
     logger.info(f'Write {args.input} to train.csv and val.csv. Train set size: {args.split}')
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

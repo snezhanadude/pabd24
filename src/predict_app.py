@@ -20,7 +20,6 @@ tokens = {
 
 model = load(MODEL_SAVE_PATH)
 
-
 @auth.verify_token
 def verify_token(token):
     if token in tokens:

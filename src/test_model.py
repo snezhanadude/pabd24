@@ -14,7 +14,6 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s %(message)s')
 
-
 def main(args):
     df_test = pd.read_csv(TEST_DATA)
     x_test = df_test[['total_meters']]
@@ -23,7 +22,6 @@ def main(args):
     y_pred = model.predict(x_test)
     mae = mean_absolute_error(y_pred, y_test)
     logger.info(f'Test model {MODEL_SAVE_PATH} on {TEST_DATA}, MAE = {mae:.0f}')
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
