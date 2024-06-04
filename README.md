@@ -70,8 +70,8 @@ python src/train_model.py -m models/linear_regression_v01.joblib
 ```bash
 python src/predict_app.py
 ```
-Адрес приложения: http://192.144.14.187:8000  
-Токен для авторизации: pabd24
+Адрес приложения: http://192.144.14.187:8000.  
+Токен для авторизации: pabd24.
 
 ### 7. Использование сервиса через веб интерфейс
 
