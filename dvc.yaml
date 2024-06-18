@@ -1,0 +1,7 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess_data.py
+  train_model:
+    cmd: python src/train_model.py
+  test_model:
+    cmd: python src/test_model.py
