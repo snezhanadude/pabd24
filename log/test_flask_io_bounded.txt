@@ -1,0 +1,30 @@
+Waited 1.07 sec {
+  "price": 2000000
+}
+ Waited 1.11 sec {
+  "price": 4000000
+}
+ Waited 1.11 sec {
+  "price": 6000000
+}
+ Waited 1.15 sec {
+  "price": 8000000
+}
+ Waited 1.25 sec {
+  "price": 10000000
+}
+ Waited 1.13 sec {
+  "price": 12000000
+}
+ Waited 1.13 sec {
+  "price": 14000000
+}
+ Waited 1.12 sec {
+  "price": 16000000
+}
+ Waited 1.09 sec {
+  "price": 18000000
+}
+ Waited 1.15 sec {
+  "price": 20000000
+}
