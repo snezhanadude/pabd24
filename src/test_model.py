@@ -16,12 +16,16 @@ logging.basicConfig(
 
 def main(args):
     df_test = pd.read_csv(TEST_DATA)
-    x_test = df_test[['total_meters']]
+    X_test = df_test[['total_meters',
+                      'floor',
+                      'floors_count',
+                      'district'
+                      ]]
     y_test = df_test['price']
-    model = load(MODEL_SAVE_PATH)
-    y_pred = model.predict(x_test)
-    mae = mean_absolute_error(y_pred, y_test)
-    logger.info(f'Test model {MODEL_SAVE_PATH} on {TEST_DATA}, MAE = {mae:.0f}')
+    model = load(args.model)
+    y_pred = model.predict(X_test)
+    mae = mean_absolute_error(y_test, y_pred)
+    logger.info(f'Test model {args.model} on {TEST_DATA}, MAE = {mae:.0f}')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

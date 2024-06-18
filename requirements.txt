@@ -7,4 +7,4 @@ pandas
 boto3
 python-dotenv
 PyGithub
-catboost
+dvc[s3]
