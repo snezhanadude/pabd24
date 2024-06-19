@@ -17,6 +17,7 @@ class TestApi(unittest.TestCase):
                              json=data,
                              headers=HEADERS)
         self.assertIn('price', resp.text)
+
     
 if __name__ == '__main__':
     unittest.main()
