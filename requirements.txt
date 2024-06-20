@@ -7,4 +7,6 @@ pandas
 boto3
 python-dotenv
 PyGithub
+gunicorn
+flask_httpauth
 dvc[s3]
