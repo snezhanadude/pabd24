@@ -1,0 +1,4 @@
+author,author_type,url,location,deal_type,accommodation_type,floor,floors_count,rooms_count,total_meters,price,district,street,house_number,underground,residential_complex,url_id,first_floor,last_floor,area
+Verges of estate,real_estate_agent,https://www.cian.ru/sale/flat/294966171/,Москва,sale,flat,4,30,3,115.6,41990000,Южнопортовый, 1-я Машиностроения,10,Дубровка,Дубровская Слобода,294966171,False,False,115.6
+ID 277086,realtor,https://www.cian.ru/sale/flat/296637315/,Москва,sale,flat,17,22,2,73.3,32000000,Щукино,Щукинская ,3,Стрешнево,Интонация,296637315,False,False,73.3
+ID 116001640,homeowner,https://www.cian.ru/sale/flat/302737973/,Москва,sale,flat,5,17,2,61.0,16000000,Бирюлево Восточное,6-я Радиальная ,5к2,Царицыно,Царицыно,302737973,False,False,61.0
