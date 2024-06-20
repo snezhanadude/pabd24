@@ -82,5 +82,5 @@ python src/predict_app.py
 Для запуска приложения используйте Docker:
 
 ```bash
-docker run -dp 8000:8000 snezhanadude/pabd24:best
+docker run -dp 8000:8000 snezhanadude/pabd24:latest
 ```
