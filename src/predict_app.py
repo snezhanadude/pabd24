@@ -6,7 +6,7 @@ from joblib import load
 from flask_httpauth import HTTPTokenAuth
 
 
-MODEL_SAVE_PATH = 'models/ridge_regression_v03.joblib'
+MODEL_SAVE_PATH = 'models/lightgbm_regression_v01.joblib'
 
 app = Flask(__name__)
 CORS(app)

@@ -1,11 +1,8 @@
 import argparse
 import logging
 import pandas as pd
-from sklearn.linear_model import Ridge
+import lightgbm as lgb
 from sklearn.metrics import mean_absolute_error
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
 from joblib import dump
 from sklearn.model_selection import train_test_split, cross_val_score
 
@@ -17,7 +14,7 @@ logging.basicConfig(
     format='%(asctime)s %(message)s')
 
 TRAIN_DATA = 'data/proc/train.csv'
-MODEL_SAVE_PATH = 'models/ridge_regression_v03.joblib'
+MODEL_SAVE_PATH = 'models/lightgbm_regression_v01.joblib'
 
 
 def main(args):
@@ -25,27 +22,20 @@ def main(args):
     X = df_train[['total_meters', 'floor', 'floors_count', 'district']]
     y = df_train['price']
 
+    # Преобразование категориальных признаков в тип category
+    X['district'] = X['district'].astype('category')
+
     # Разделение на обучающую и тестовую выборки
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Определение колонок для One-Hot Encoding и стандартизации
-    categorical_features = ['district']
-    numeric_features = ['total_meters', 'floor', 'floors_count']
-
-    # Создание трансформера для предобработки данных
-    preprocessor = ColumnTransformer(
-        transformers=[
-            ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features),
-            ('num', StandardScaler(), numeric_features)
-        ])
-
-    # Создание и обучение модели Ridge регрессии
-    model = Pipeline(steps=[
-        ('preprocessor', preprocessor),
-        ('regressor', Ridge(alpha=1.0))
-    ])
-
-    model.fit(X_train, y_train)
+    # Создание и обучение модели LightGBM
+    model = lgb.LGBMRegressor(
+        n_estimators=1000,
+        learning_rate=0.1,
+        num_leaves=31,
+        random_state=42
+    )
+    model.fit(X_train, y_train, categorical_feature=['district'])
 
     # Сохранение модели
     dump(model, args.model)

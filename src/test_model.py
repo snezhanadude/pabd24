@@ -4,7 +4,7 @@ import pandas as pd
 from joblib import load
 from sklearn.metrics import mean_absolute_error
 
-MODEL_SAVE_PATH = 'models/ridge_regression_v03.joblib'
+MODEL_SAVE_PATH = 'models/lightgbm_regression_v01.joblib'
 TEST_DATA = 'data/proc/val.csv'
 
 logger = logging.getLogger(__name__)
@@ -16,12 +16,12 @@ logging.basicConfig(
 
 def main(args):
     df_test = pd.read_csv(TEST_DATA)
-    X_test = df_test[['total_meters',
-                      'floor',
-                      'floors_count',
-                      'district'
-                      ]]
+    X_test = df_test[['total_meters', 'floor', 'floors_count', 'district']]
     y_test = df_test['price']
+
+    # Преобразование категориального признака в тип category
+    X_test['district'] = X_test['district'].astype('category')
+
     model = load(args.model)
     y_pred = model.predict(X_test)
     mae = mean_absolute_error(y_test, y_pred)
